@@ -6,10 +6,18 @@ using Photon.Realtime;
 
 public class PixelGunGameManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameObject playerPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(playerPrefab == null) { Debug.LogError("Player prefab not set!"); return; }
+
+        int randomPoint = Random.Range(-20,20);
+        if(PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(randomPoint, 0, randomPoint), Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -27,7 +35,7 @@ public class PixelGunGameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log("New Player " + newPlayer.NickName + " entered " + PhotonNetwork.CurrentRoom.Name);
-        Debug.Log("Player Count : " + PhotonNetwork.CurrentRoom.PlayerCount);
+        Debug.Log("Player Count : " + PhotonNetwork.CurrentRoom.PlayerCount); 
     }
     #endregion Photon Callbacks
 }
