@@ -21,6 +21,7 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
         {
             transform.GetComponent<MovementController>().enabled = false;
             FPSCamera.GetComponent<Camera>().enabled = false ;
+            FPSCamera.GetComponent<AudioListener>().enabled = false ;
 
         }
         SetPlayerUI();
