@@ -372,8 +372,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     #endregion Public Methods
 
+
     #region Private Methods
-    
 
     private void ClearRoomListView()
     {
